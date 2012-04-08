@@ -46,7 +46,7 @@ This script is loosely based off of [WP Downloader](http://www.farinspace.com/wo
 
 ##Screenshots
 
-![WordPress admin dashboard](screenshot.png "WordPress admin dashboard")
+![WordPress admin dashboard](https://github.com/jaredatch/wp-prep/raw/master/screenshot.png "WordPress admin dashboard")
 
 
 ### Changelog
