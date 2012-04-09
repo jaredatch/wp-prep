@@ -264,6 +264,7 @@ if ( !empty( $contents ) ) {
 	$version = explode( "\n", $contents );
 	$version = $version[2];
 }
+else { $version = ''; }
 
 /** Set fields and checkboxes */
 $url                     = !isset( $url ) ? 'http://wordpress.org/latest.zip' : $url ;
