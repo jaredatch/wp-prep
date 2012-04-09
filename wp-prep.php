@@ -19,15 +19,16 @@ define( 'BASE_URL' , 'https://github.com/jaredatch/Genesis-Starter-Theme/zipball
 define( 'TGMPA_URL' , 'http://yourdomain.com/files/plugin-install.txt' );
 
 /** Setup the variables we will be using. */
-$pass                 = $_POST['pass'];
-$url                  = $_POST['url'];
-$directory            = $_POST['directory'];
-$option_this          = $_POST['option_this'];
-$option_genesis       = $_POST['option_genesis'];
-$option_base          = $_POST['option_base'];
-$option_plugins       = $_POST['option_plugins'];
-$option_twentyten     = $_POST['option_twentyten'];
-$option_twentyeleven  = $_POST['option_twentyeleven'];
+$pass                 = isset( $_POST['pass'] ) ? $_POST['pass'] : '';
+$url                  = isset( $_POST['url'] ) ? $_POST['url'] : '';
+$directory            = isset( $_POST['directory'] ) ? $_POST['directory'] : '';
+$option_this          = isset( $_POST['option_this'] ) ? $_POST['option_this'] : '';
+$option_genesis       = isset( $_POST['option_genesis'] ) ? $_POST['option_genesis'] : '';
+$option_base          = isset( $_POST['option_base'] ) ? $_POST['option_base'] : '';
+$option_plugins       = isset( $_POST['option_plugins'] ) ? $_POST['option_plugins'] : '';
+$option_twentyten     = isset( $_POST['option_twentyten'] ) ? $_POST['option_twentyten'] : '';
+$option_twentyeleven  = isset( $_POST['option_twentyeleven'] ) ? $_POST['option_twentyeleven'] : '';
+$option_hello         = isset( $_POST['option_hello'] ) ? $_POST['option_hello'] : '';
 
 if ( isset( $_POST['finish'] ) && isset( $pass ) && $pass == PASSWORD ) {
 	
@@ -263,6 +264,7 @@ if ( !empty( $contents ) ) {
 	$version = explode( "\n", $contents );
 	$version = $version[2];
 }
+else { $version = ''; }
 
 /** Set fields and checkboxes */
 $url                     = !isset( $url ) ? 'http://wordpress.org/latest.zip' : $url ;
@@ -380,7 +382,7 @@ $option_twentyeleven     = ( isset ( $option_twentyeleven ) &&  $option_twentyel
 			<p><input type="checkbox" name="option_genesis" value="1" <?php echo $option_genesis; ?> /> Install <a href="http://jaredatchison.com/go/genesis/">Genesis Framework</a></p>
 			<p><input type="checkbox" name="option_base" value="1" <?php echo $option_base; ?> /> Install base theme</a></p>
 			<p><input type="checkbox" name="option_plugins" value="1" <?php echo $option_plugins; ?> /> Install TGMPA plugin bundle</p>
-			<p><input type="checkbox" name="option_this" value="1"<?php echo $option_this; ?> /> Delete <code><?php echo $_SERVER['PHP_SELF']; ?></code> when done <span class="note">(recommended)</span></p>
+			<p><input type="checkbox" name="option_this" checked="checked" value="1"<?php echo $option_this; ?> /> Delete <code><?php echo $_SERVER['PHP_SELF']; ?></code> when done <span class="note">(recommended)</span></p>
 			<p><input type="checkbox" name="option_hello" value="1"<?php echo $option_hello; ?> /> Delete <code>wp-content/plugins/hello.php</code></p>
 			<p><input type="checkbox" name="option_twentyten" value="1"<?php echo $option_twentyten; ?> /> Delete <code>wp-content/themes/twentyten</code></p>
 			<p><input type="checkbox" name="option_twentyeleven" value="1"<?php echo $option_twentyeleven; ?> /> Delete <code>wp-content/themes/twentyeleven</code></p>
