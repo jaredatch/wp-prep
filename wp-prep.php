@@ -16,7 +16,7 @@
 define( 'PASSWORD', 'password' );   // Change this to a very long password or passphrase
 define( 'GENESIS_URL' , 'http://yourdomain.com/files/genesis.zip' );
 define( 'BASE_URL' , 'https://github.com/jaredatch/Genesis-Starter-Theme/zipball/master' );
-define( 'TGMPA_URL' , 'http://yourdomain.com/files/plugin-install.txt' );
+define( 'TGMPA_URL' , 'http://yourdomain.com/files/plugin-installer.txt' );
 
 /** Setup the variables we will be using. */
 $pass                 = isset( $_POST['pass'] ) ? $_POST['pass'] : '';
@@ -67,15 +67,15 @@ if ( isset( $_POST['finish'] ) && isset( $pass ) && $pass == PASSWORD ) {
 	/** Install Plugin Bundle *****************************************************/
 	
 	if ( isset( $option_plugins ) && $option_plugins == 1 ) {
-		download( 'plugin-install.php' , TGMPA_URL );
+		download( 'plugin-installer.php' , TGMPA_URL );
 		if ( !empty( $directory ) ) {
 			// move to specified directory
-			copy( 'plugin-install.php', './' . $directory . '/wp-content/plugins/plugin-install.php' );
+			copy( 'plugin-installer.php', './' . $directory . '/wp-content/plugins/plugin-installer.php' );
 		} else {
 			// move to root directory
-			copy( 'plugin-install.php','./wp-content/plugins/plugin-install.php' );
+			copy( 'plugin-installer.php','./wp-content/plugins/plugin-installer.php' );
 		}		
-		unlink( 'plugin-install.php' );
+		unlink( 'plugin-installer.php' );
 	}	
 	
 	/** Delete TwentyTen/Eleven ***************************************************/
