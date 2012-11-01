@@ -389,7 +389,7 @@ $option_twentyeleven     = ( isset ( $option_twentyeleven ) &&  $option_twentyel
 			<input type="hidden" name="pass" value="<?php echo $input_p; ?>">
 			<p class="submit"><input type="submit" name="finish" value="Finish Setup!"/></p>
 		</form>
-		<? endif; ?>
+		<?php endif; ?>
 	</div>
 	<div id="footer">
 		<a href="http://github.com/jaredatch/">WP Setup script</a> by <a href="http://jaredatchison.com">Jared Atchison</a> - <a href="#" id="credits-toggle">Credits</a>
