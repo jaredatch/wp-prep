@@ -28,6 +28,7 @@ $option_base          = isset( $_POST['option_base'] ) ? $_POST['option_base'] :
 $option_plugins       = isset( $_POST['option_plugins'] ) ? $_POST['option_plugins'] : '';
 $option_twentyten     = isset( $_POST['option_twentyten'] ) ? $_POST['option_twentyten'] : '';
 $option_twentyeleven  = isset( $_POST['option_twentyeleven'] ) ? $_POST['option_twentyeleven'] : '';
+$option_twentytwelve  = isset( $_POST['option_twentytwelve'] ) ? $_POST['option_twentytwelve'] : '';
 $option_hello         = isset( $_POST['option_hello'] ) ? $_POST['option_hello'] : '';
 
 if ( isset( $_POST['finish'] ) && isset( $pass ) && $pass == PASSWORD ) {
@@ -78,22 +79,30 @@ if ( isset( $_POST['finish'] ) && isset( $pass ) && $pass == PASSWORD ) {
 		unlink( 'plugin-installer.php' );
 	}	
 	
-	/** Delete TwentyTen/Eleven ***************************************************/
+	/** Delete TwentyTen/Eleven/Twelve *********************************************/
 	
-	if ( isset( $option_twentyten ) && $option_twentyten == 1 ){
+	if ( isset( $option_twentyten ) && $option_twentyten == 1 && is_dir('./' . $directory . '/wp-content/themes/twentyten')){
 		if ( !empty( $directory ) ) {
 			recursive_remove( './' . $directory . '/wp-content/themes/twentyten' );
 		} else {
 			recursive_remove( './wp-content/themes/twentyten' );
 		}
 	}
-	if ( isset( $option_twentyeleven ) && $option_twentyeleven == 1 ){
+	if ( isset( $option_twentyeleven ) && $option_twentyeleven == 1 && is_dir('./' . $directory . '/wp-content/themes/twentyeleven')){
 		if ( !empty( $directory ) ) {
 			recursive_remove( './' . $directory . '/wp-content/themes/twentyeleven' );
 		} else {
 			recursive_remove( './wp-content/themes/twentyeleven' );
 		}
 	}
+	if ( isset( $option_twentytwelve ) && $option_twentytwelve == 1 && is_dir('./' . $directory . '/wp-content/themes/twentytwelve')){
+		if ( !empty( $directory ) ) {
+			recursive_remove( './' . $directory . '/wp-content/themes/twentytwelve' );
+		} else {
+			recursive_remove( './wp-content/themes/twentytwelve' );
+		}
+	}
+	
 	
 	/** Delete This Script ********************************************************/
 	
@@ -276,6 +285,7 @@ $option_base             = ( isset ( $option_base ) && $option_base == 1 ) ? 'ch
 $option_plugins          = ( isset ( $option_plugins  ) && $option_plugins  == 1 ) ? 'checked="checked"' : '' ;
 $option_twentyten        = ( isset ( $option_twentyten ) &&  $option_twentyten == 1 ) ? 'checked="checked"' : '' ; 
 $option_twentyeleven     = ( isset ( $option_twentyeleven ) &&  $option_twentyeleven == 1 ) ? 'checked="checked"' : '' ; 
+$option_twentytwelve     = ( isset ( $option_twentytwelve ) &&  $option_twentytwelve == 1 ) ? 'checked="checked"' : '' ; 
 ?>
 <!DOCTYPE html>
 <html>
@@ -386,6 +396,7 @@ $option_twentyeleven     = ( isset ( $option_twentyeleven ) &&  $option_twentyel
 			<p><input type="checkbox" name="option_hello" value="1"<?php echo $option_hello; ?> /> Delete <code>wp-content/plugins/hello.php</code></p>
 			<p><input type="checkbox" name="option_twentyten" value="1"<?php echo $option_twentyten; ?> /> Delete <code>wp-content/themes/twentyten</code></p>
 			<p><input type="checkbox" name="option_twentyeleven" value="1"<?php echo $option_twentyeleven; ?> /> Delete <code>wp-content/themes/twentyeleven</code></p>
+			<p><input type="checkbox" name="option_twentytwelve" value="1"<?php echo $option_twentytwelve; ?> /> Delete <code>wp-content/themes/twentytwelve</code></p>
 			<input type="hidden" name="pass" value="<?php echo $input_p; ?>">
 			<p class="submit"><input type="submit" name="finish" value="Finish Setup!"/></p>
 		</form>
