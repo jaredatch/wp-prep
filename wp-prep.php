@@ -35,6 +35,7 @@ $option_hello         = isset( $_POST['option_hello'] ) ? $_POST['option_hello']
 if ( isset( $_POST['finish'] ) && isset( $pass ) && $pass == PASSWORD ) {
 	
 	/** Instal WordPress **********************************************************/
+	
 	// If some how the URL is blank, fall back to default
 	if ( !isset( $url ) ) $url = 'http://wordpress.org/latest.zip';
 	
@@ -79,7 +80,7 @@ if ( isset( $_POST['finish'] ) && isset( $pass ) && $pass == PASSWORD ) {
 		unlink( 'plugin-installer.php' );
 	}	
 	
-	/** Delete TwentyTen/Eleven ***************************************************/
+	/** Delete TwentyTen/Eleven/Twelve *********************************************/
 	
 	if ( isset( $option_twentyten ) && $option_twentyten == 1 ){
 		if ( !empty( $directory ) && is_dir( './' . $directory . '/wp-content/themes/twentyten' ) ) {
