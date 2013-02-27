@@ -24,7 +24,7 @@ function ja_install_base_plugins() {
 		array(
 			'name'     				=> 'GravityForms', 
 			'slug'     				=> 'gravityforms', 
-			'source'   				=> 'http://yourdomain.com/files/gravityforms.zip', 
+			'source'   				=> 'http://files.wpsmith.net/gravityforms.zip', 
 			'required' 				=> false, 
 			'external_url' 			=> 'http://www.gravityforms.com/', 
 		),
@@ -33,7 +33,7 @@ function ja_install_base_plugins() {
 		array(
 			'name'     				=> 'BackupBuddy', 
 			'slug'     				=> 'backupbuddy', 
-			'source'   				=> 'http://yourdomain.com/files/backupbuddy.zip', 
+			'source'   				=> 'http://files.wpsmith.net/backupbuddy.zip', 
 			'required' 				=> false, 
 			'external_url' 			=> 'http://pluginbuddy.com/purchase/backupbuddy/', 
 		),
@@ -42,7 +42,7 @@ function ja_install_base_plugins() {
 		array(
 			'name'     				=> 'Sidekick', 
 			'slug'     				=> 'sidekick',
-			'source'   				=> 'http://yourdomain.com/files/sidekick.zip',
+			'source'   				=> 'http://files.wpsmith.net/sidekick.zip',
 			'required' 				=> false,
 			'external_url' 			=> 'http://www.farinspace.com/wordpress-sidekick-plugin/',
 		),
@@ -51,7 +51,7 @@ function ja_install_base_plugins() {
 		array(
 			'name'     				=> 'Soliloquy', 
 			'slug'     				=> 'soliloquy', 
-			'source'   				=> 'http://yourdomain.com/files/soliloquy.zip',
+			'source'   				=> 'http://files.wpsmith.net/soliloquy.zip',
 			'required' 				=> false, 
 			'external_url' 			=> 'http://soliloquywp.com/',
 		),
