@@ -1,8 +1,9 @@
 <?php
 /**
  * @package wordpress-prep
- * @version 1.0
+ * @version 1.1.0
  * @author Jared Atchison
+ * @author Travis Smith
  * @copyright Copyright (c) 2012, Jared Atchison
  * @link http://github.com/jaredatch/wp-prep
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -28,6 +29,7 @@ $option_base          = isset( $_POST['option_base'] ) ? $_POST['option_base'] :
 $option_plugins       = isset( $_POST['option_plugins'] ) ? $_POST['option_plugins'] : '';
 $option_twentyten     = isset( $_POST['option_twentyten'] ) ? $_POST['option_twentyten'] : '';
 $option_twentyeleven  = isset( $_POST['option_twentyeleven'] ) ? $_POST['option_twentyeleven'] : '';
+$twentytwelve         = isset( $_POST['twentytwelve'] ) ? $_POST['twentytwelve'] : '';
 $option_hello         = isset( $_POST['option_hello'] ) ? $_POST['option_hello'] : '';
 
 if ( isset( $_POST['finish'] ) && isset( $pass ) && $pass == PASSWORD ) {
@@ -78,20 +80,27 @@ if ( isset( $_POST['finish'] ) && isset( $pass ) && $pass == PASSWORD ) {
 		unlink( 'plugin-installer.php' );
 	}	
 	
-	/** Delete TwentyTen/Eleven ***************************************************/
+	/** Delete TwentyTen/Eleven/Twelve *********************************************/
 	
 	if ( isset( $option_twentyten ) && $option_twentyten == 1 ){
-		if ( !empty( $directory ) ) {
+		if ( !empty( $directory ) && is_dir( './' . $directory . '/wp-content/themes/twentyten' ) ) {
 			recursive_remove( './' . $directory . '/wp-content/themes/twentyten' );
-		} else {
+		} elseif ( is_dir( './' . $directory . '/wp-content/themes/twentyten' ) ) {
 			recursive_remove( './wp-content/themes/twentyten' );
 		}
 	}
 	if ( isset( $option_twentyeleven ) && $option_twentyeleven == 1 ){
-		if ( !empty( $directory ) ) {
+		if ( !empty( $directory ) && is_dir( './' . $directory . '/wp-content/themes/twentyeleven' ) ) {
 			recursive_remove( './' . $directory . '/wp-content/themes/twentyeleven' );
-		} else {
+		} elseif ( is_dir( './' . $directory . '/wp-content/themes/twentyeleven' ) ) {
 			recursive_remove( './wp-content/themes/twentyeleven' );
+		}
+	}
+	if ( isset( $twentytwelve ) && $twentytwelve == 1 ){
+		if ( !empty( $directory ) && is_dir( './' . $directory . '/wp-content/themes/twentytwelve' ) ) {
+			recursive_remove( './' . $directory . '/wp-content/themes/twentytwelve' );
+		} elseif ( is_dir( './' . $directory . '/wp-content/themes/twentytwelve' ) ) {
+			recursive_remove( './wp-content/themes/twentytwelve' );
 		}
 	}
 	
@@ -276,6 +285,7 @@ $option_base             = ( isset ( $option_base ) && $option_base == 1 ) ? 'ch
 $option_plugins          = ( isset ( $option_plugins  ) && $option_plugins  == 1 ) ? 'checked="checked"' : '' ;
 $option_twentyten        = ( isset ( $option_twentyten ) &&  $option_twentyten == 1 ) ? 'checked="checked"' : '' ; 
 $option_twentyeleven     = ( isset ( $option_twentyeleven ) &&  $option_twentyeleven == 1 ) ? 'checked="checked"' : '' ; 
+$option_twentytwelve     = ( isset ( $option_twentytwelve ) &&  $option_twentytwelve == 1 ) ? 'checked="checked"' : '' ; 
 ?>
 <!DOCTYPE html>
 <html>
@@ -351,7 +361,12 @@ $option_twentyeleven     = ( isset ( $option_twentyeleven ) &&  $option_twentyel
 				echo '<a href="' . $directory . '/index.php">WordPress configuration</a>.';
 			} else {
 				echo '<a href="index.php">WordPress configuration</a>.';
-			}	
+			}
+			if ( !empty( $directory ) ) {
+				echo '<a href="setup-config.php?directory=' . $directory . '">Custom configuration</a>.';
+			} else {
+				echo '<a href="index.php">WordPress configuration</a>.';
+			}
 			echo '</div>';
 		elseif ( !isset( $pass ) ) :
 			password_prompt();
@@ -386,13 +401,14 @@ $option_twentyeleven     = ( isset ( $option_twentyeleven ) &&  $option_twentyel
 			<p><input type="checkbox" name="option_hello" value="1"<?php echo $option_hello; ?> /> Delete <code>wp-content/plugins/hello.php</code></p>
 			<p><input type="checkbox" name="option_twentyten" value="1"<?php echo $option_twentyten; ?> /> Delete <code>wp-content/themes/twentyten</code></p>
 			<p><input type="checkbox" name="option_twentyeleven" value="1"<?php echo $option_twentyeleven; ?> /> Delete <code>wp-content/themes/twentyeleven</code></p>
+			<p><input type="checkbox" name="option_twentytwelve" value="1"<?php echo $option_twentytwelve; ?> /> Delete <code>wp-content/themes/twentytwelve</code></p>
 			<input type="hidden" name="pass" value="<?php echo $input_p; ?>">
 			<p class="submit"><input type="submit" name="finish" value="Finish Setup!"/></p>
 		</form>
 		<?php endif; ?>
 	</div>
 	<div id="footer">
-		<a href="http://github.com/jaredatch/">WP Setup script</a> by <a href="http://jaredatchison.com">Jared Atchison</a> - <a href="#" id="credits-toggle">Credits</a>
+		<a href="http://github.com/jaredatch/">WP Setup script</a> by <a href="http://jaredatchison.com">Jared Atchison</a> &amp; <a href="http://wpsmith.net/">Travis Smith</a> - <a href="#" id="credits-toggle">Credits</a>
 		<div id="credits"> The script is loosely based off of <a href="http://www.farinspace.com/wordpress-downloader/">WordPress Downloader</a> by farinspace. Plugin bundle activation is powered by <a href="http://tgmpluginactivation.com/">TGM Plugin Activation</a>.<br />The other elements were hacked together by <a href="http://jaredatchison.com">me</a>!</div>
 	</div>
 </body>
