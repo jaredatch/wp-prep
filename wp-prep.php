@@ -29,6 +29,7 @@ $option_plugins       = isset( $_POST['option_plugins'] ) ? $_POST['option_plugi
 $option_twentyten     = isset( $_POST['option_twentyten'] ) ? $_POST['option_twentyten'] : '';
 $option_twentyeleven  = isset( $_POST['option_twentyeleven'] ) ? $_POST['option_twentyeleven'] : '';
 $option_twentytwelve  = isset( $_POST['option_twentytwelve'] ) ? $_POST['option_twentytwelve'] : '';
+$option_twentythirteen  = isset( $_POST['option_twentythirteen'] ) ? $_POST['option_twentythirteen'] : '';
 $option_hello         = isset( $_POST['option_hello'] ) ? $_POST['option_hello'] : '';
 
 if ( isset( $_POST['finish'] ) && isset( $pass ) && $pass == PASSWORD ) {
@@ -100,6 +101,13 @@ if ( isset( $_POST['finish'] ) && isset( $pass ) && $pass == PASSWORD ) {
 			recursive_remove( './' . $directory . '/wp-content/themes/twentytwelve' );
 		} else {
 			recursive_remove( './wp-content/themes/twentytwelve' );
+		}
+	}
+	if ( isset( $option_twentythirteen ) && $option_twentythirteen == 1 && is_dir('./' . $directory . '/wp-content/themes/twentythirteen')){
+		if ( !empty( $directory ) ) {
+			recursive_remove( './' . $directory . '/wp-content/themes/twentythirteen' );
+		} else {
+			recursive_remove( './wp-content/themes/twentythirteen' );
 		}
 	}
 	
